@@ -1,4 +1,5 @@
 using Caching.Data;
+using DataAccessLibrary;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -14,6 +15,8 @@ namespace Caching
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
             builder.Services.AddSingleton<WeatherForecastService>();
+            builder.Services.AddTransient<DataAccess>();
+            builder.Services.AddMemoryCache();
 
             var app = builder.Build();
 
