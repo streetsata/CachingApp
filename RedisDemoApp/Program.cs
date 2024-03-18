@@ -1,7 +1,6 @@
-using Caching.Data;
-using DataAccessLibrary;
+using RedisDemoApp.Data;
 
-namespace Caching
+namespace RedisDemoApp
 {
     public class Program
     {
@@ -14,8 +13,12 @@ namespace Caching
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
             builder.Services.AddSingleton<WeatherForecastService>();
-            builder.Services.AddTransient<DataAccess>();
-            builder.Services.AddMemoryCache();
+
+            builder.Services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = builder.Configuration.GetConnectionString("Redis");
+                options.InstanceName = "RedisDemo_";
+            });
 
             var app = builder.Build();
 

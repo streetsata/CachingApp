@@ -1,6 +1,6 @@
 using FluentAssertions;
-using Moq;
 using Microsoft.Extensions.Caching.Memory;
+using Moq;
 
 namespace DataAccessLibrary.Tests
 {

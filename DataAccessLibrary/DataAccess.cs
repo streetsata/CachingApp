@@ -39,9 +39,9 @@ namespace DataAccessLibrary
 
         public async Task<List<EmployeeModel>> GetCachedEmloyeesAsync()
         {
-            List<EmployeeModel> output;
+            List<EmployeeModel>? output;
 
-            output = _memoryCache.Get<List<EmployeeModel>>(key: "employees");
+            output = _memoryCache.Get<List<EmployeeModel>>(key: "employees") ?? null;
 
             if (output is null)
             {
